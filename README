@@ -8,7 +8,7 @@ EURASIP Journal on Wireless Communications and Networking 2014.1 (2014): 162.
 
 LTE-Sim refers to the paper "Simulating LTE cellular systems: An open-source framework." 
 IEEE transactions on vehicular technology 60.2 (2011): 498-513.
-#################################################################################################################
+############################################################################################################
 
 
 
@@ -29,7 +29,7 @@ Several files of LTE-Sim ware modified, which can be searched with string "// ad
 	LTE-Sim/src/protocolStack/rrc/ho/handover-entity.cpp
 
 Simulations with different handover schemes can be set by HandoverEntity::HandoverEntity() in handover-entity.cpp.
-#################################################################################################################
+############################################################################################################
 
 
 
@@ -144,4 +144,4 @@ Software manager and main developer
 TELEMATICS LAB - Politecnico di Bari
 g.piro@poliba.it
 peppe@giuseppepiro.com
-#################################################################################################################
+############################################################################################################
