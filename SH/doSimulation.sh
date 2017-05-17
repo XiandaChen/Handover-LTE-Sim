@@ -1,0 +1,96 @@
+FILE="Sim"   #OUTPUT FILE NAME
+NUMSIM=5  #Number of simulations
+FILENAME="MultiCellWithBorderPicos"   # SIMULATION TYPE NAME
+# modified
+CELS=19       # NUMBER OF CELLS
+MINUSERS=4
+INTERVAL=1
+MAXUSERS=5
+
+# params of LTE-SIM MULTICEL
+
+RADIUS=0.5 # Radius in Km
+NBVOIP=1  # Number of Voip Flows
+# modified
+NBVIDEO=0 #Number of Video
+# modified
+NBBE=0 # Number of Best Effort Flows
+NBCBR=0 #Number of CBR flows
+#Scheduler Type PF=1, MLWDF=2 EXP= 3
+# added code
+SCHED_TYPE=1    # SCHEDULER TYPE
+FRAME_STRUCT=1  # FDD or TDD
+# modified
+# SPEED=3 #User speed 
+MAXDELAY=0.1
+# modified
+VIDEOBITRATE=128
+
+TOTALNAME3_HO=""
+TOTALNAME30_HO=""
+TOTALNAME120_HO=""
+TOTALNAME200_HO=""
+TOTALNAME300_HO=""
+
+# 1 stands for standard hard ho, 2 stands for SINR-threshold scheme, 3 stands for the proposed
+HOTYPE=1
+
+echo Start running simulation!
+
+COUNT=1
+NBUE=$MINUSERS
+	until [ $NBUE -gt $MAXUSERS ]; do
+		COUNT=1
+		until [ $COUNT -gt $NUMSIM ]; do
+
+		TOTALNAME3_HO=$FILE"_"$COUNT"_"$FILENAME"_3kmph_"$NBUE"UE"$CELS"CELL"$HOTYPE"HO"".sim"
+./LTE-Sim MultiCellWithBorderPicos $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR $SCHED_TYPE $FRAME_STRUCT 3 $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME3_HO
+                        echo FILE $TOTALNAME3_HO CREATED!
+
+		TOTALNAME30_HO=$FILE"_"$COUNT"_"$FILENAME"_30kmph_"$NBUE"UE"$CELS"CELL"$HOTYPE"HO"".sim"
+./LTE-Sim MultiCellWithBorderPicos $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR $SCHED_TYPE $FRAME_STRUCT 30 $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME30_HO
+                        echo FILE $TOTALNAME30_HO CREATED!
+
+                TOTALNAME120_HO=$FILE"_"$COUNT"_"$FILENAME"_120kmph_"$NBUE"UE"$CELS"CELL"$HOTYPE"HO"".sim"
+./LTE-Sim MultiCellWithBorderPicos $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR $SCHED_TYPE $FRAME_STRUCT 120 $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME120_HO
+                        echo FILE $TOTALNAME120_HO CREATED!
+
+		TOTALNAME200_HO=$FILE"_"$COUNT"_"$FILENAME"_200kmph_"$NBUE"UE"$CELS"CELL"$HOTYPE"HO"".sim"
+./LTE-Sim MultiCellWithBorderPicos $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR $SCHED_TYPE $FRAME_STRUCT 200 $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME200_HO
+                        echo FILE $TOTALNAME200_HO CREATED!
+
+		TOTALNAME300_HO=$FILE"_"$COUNT"_"$FILENAME"_300kmph_"$NBUE"UE"$CELS"CELL"$HOTYPE"HO"".sim"
+./LTE-Sim MultiCellWithBorderPicos $CELS $RADIUS $NBUE $NBVOIP $NBVIDEO $NBBE $NBCBR $SCHED_TYPE $FRAME_STRUCT 300 $MAXDELAY $VIDEOBITRATE $COUNT > $TOTALNAME300_HO
+                        echo FILE $TOTALNAME300_HO CREATED!
+
+
+		let COUNT=COUNT+1
+		done
+	let NBUE=NBUE+INTERVAL
+	done
+
+
+
+echo SIMULATION FINISHIED!
+echo CREATING RESULTS REPORT!
+
+
+
+# params 1 MINUSERS, 2 MAXUSERS, 3 INTERVAL, 4 FILENAME, 5 FILE, 6 NUMSIM,  7 TypeFlow, 8 Graphic_name
+
+# result shells
+#./packet_loss_ratio.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO Packet-Loss-Ratio
+#./packet_loss_ratio.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP Packet-Loss-Ratio
+#./packet_loss_ratio.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Packet-Loss-Ratio
+#./goodput_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO System-Throughput
+#./goodput_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP System-Throughput
+#./thoughput_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Throughput
+#./delay_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VIDEO Average-Packet-Delay
+#./delay_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM VOIP Average-Packet-Delay
+#./delay_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM INF_BUF Delay
+#./spectral_efficiency_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM Spectral-Efficiency Spec-Eff
+#./fairnessIndex_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  VIDEO Fairness-Index
+#./fairnessIndex_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  VOIP Fairness-Index
+#./fairnessIndex_comp.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM  INF_BUF Fairness-Index
+#./average_HOs.sh $MINUSERS $MAXUSERS $INTERVAL $FILENAME $FILE $NUMSIM System-Average-Handover-per-Second
+
