@@ -14,8 +14,7 @@ IEEE transactions on vehicular technology 60.2 (2011): 498-513.
 
 #######################################################################
 ############# DIHAT Implementation ####################
-New files are created in LTE-Sim/src/protocolStack/rrc/ho, implementing DIHAT scheme as well as other schemes such as
-standard hard handover scheme, intergrator handover scheme (VTC 2008-Fall), and nch (network control handover) scheme (WCNC 2013).
+New files are created in LTE-Sim/src/protocolStack/rrc/ho, implementing DIHAT scheme as well as other schemes such as standard hard handover scheme, intergrator handover scheme (VTC 2008-Fall), and nch (network control handover) scheme (WCNC 2013).
 	dihat-ho-manager.h (cpp)
 	hard-ho-manager.h (cpp)
 	integrator-ho-manager.h (cpp)
