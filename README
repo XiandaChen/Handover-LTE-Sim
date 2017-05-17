@@ -1,4 +1,40 @@
 
+#######################################################################
+############# Overview ####################
+This is the implementation of a handover scheme, DIHAT, using an open source LTE simulator, LTE-Sim Release5.
+
+DIHAT refers to the paper "DIHAT: Differential Integrator Handover Algorithm with TTT window for LTE-based systems." 
+EURASIP Journal on Wireless Communications and Networking 2014.1 (2014): 162.
+
+LTE-Sim refers to the paper "Simulating LTE cellular systems: An open-source framework." 
+IEEE transactions on vehicular technology 60.2 (2011): 498-513.
+#################################################################################################################
+
+
+
+#######################################################################
+############# DIHAT Implementation ####################
+New files are created in LTE-Sim/src/protocolStack/rrc/ho, implementing DIHAT scheme as well as other schemes such as
+standard hard handover scheme, intergrator handover scheme (VTC 2008-Fall), and nch (network control handover) scheme (WCNC 2013).
+	dihat-ho-manager.h (cpp)
+	hard-ho-manager.h (cpp)
+	integrator-ho-manager.h (cpp)
+	nch-ho-manager.h (cpp)
+
+Several files of LTE-Sim ware modified, which can be searched with string "// added", including
+	LTE-Sim/src/device/UserEquipment.h	(cpp)
+	LTE-Sim/src/device/NetworkNode.h (cpp)
+	LTE-Sim/src/componentManagers/NetworkManager.cpp
+	LTE-Sim/src/scenarios/multi-cell.h
+	LTE-Sim/src/protocolStack/rrc/ho/handover-entity.cpp
+
+Simulations with different handover schemes can be set by HandoverEntity::HandoverEntity() in handover-entity.cpp.
+#################################################################################################################
+
+
+
+#######################################################################
+########### README file from LTE-Sim Release5 ##############
       		       LTE-Sim
 
     an open source framework to simulate LTE networks  
@@ -108,3 +144,4 @@ Software manager and main developer
 TELEMATICS LAB - Politecnico di Bari
 g.piro@poliba.it
 peppe@giuseppepiro.com
+#################################################################################################################
