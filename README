@@ -5,12 +5,9 @@ This is the implementation of a handover scheme, DIHAT, using an open source LTE
 
 NOTE, THERE IS NO WARRANTY FOR THE DIHAT IMPLEMENTATION OR ANY OTHER IMPLEMENTATIONS.
 
-NOTE, if you use DIHAT for your work, you are asked to cite the following tow articles.
+Please give the credit for the following paper, if you use the code for your work. Thanks.
 	"DIHAT: Differential Integrator Handover Algorithm with TTT window for LTE-based systems." 
 	EURASIP Journal on Wireless Communications and Networking 2014.1 (2014): 162.
-and
-	"Efficient and prompt handover in LTE-based systems by predicting the target eNodeBs." 
-	IEEE Int'l conf. Cyber-Enabled Distributed Computing and Knowledge Discovery (CyberC), 2014.
 
 LTE-Sim refers to the paper "Simulating LTE cellular systems: An open-source framework." 
 IEEE transactions on vehicular technology 60.2 (2011): 498-513.
